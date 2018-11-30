@@ -1,0 +1,154 @@
+<main class="register-container">
+  <div class="welcome">
+    <h1>Welcome to
+      <span>Lonely</span>
+      <i class="fas fa-cat"></i>
+    </h1>
+  </div>
+  <div class="register-card">
+    <form class="form" action="/register" method="POST">
+      <div class="user information">
+        <h2>User Information</h2>
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" placeholder="John" required>
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" placeholder="Wick" required>
+        <label for="email">E-mail</label>
+        <input type="email" name="lastName" placeholder="lonely@aol.com" required>
+        <label for="password">Password</label>
+        <input type="password" name="password" required>
+      </div>
+      <div class="user address">
+        <h2>Location</h2>
+        <label for="city">City</label>
+        <input type="text" name="city" placeholder="Kailua" required>
+        <label for="state">State</label>
+        <input type="text" name="state" placeholder="Hawaii" required>
+      </div>
+      <div class="user about-me">
+        <h2>About Me</h2>
+        <label for="gender">Gender</label>
+        <select name="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="nonBinary">Non-Binary</option>
+        </select>
+        <label for="sexualPreference">Sexual Preference</label>
+        <select name="sexualPreference">
+          <option value="straight">Straight</option>
+          <option value="gayLesbian">Gay/Lesbian</option>
+          <option value="biSexual">Bisexual</option>
+        </select>
+        <label for="likes">Likes</label>
+        <input type="text" name="likes" placeholder="Too many cats" required>
+        <label for="dislikes">Dislikes</label>
+        <input type="text" name="dislikes" placeholder="Laughing" required>
+        <label for="hobbies">Hobbies</label>
+        <textarea name="hobbies" placeholder="I love collecting coins and talking to them."></textarea>
+      </div>
+      <div class="user questionaire">
+        <h2>Questionaire</h2>
+        <label for="question1">How many cats do you own?</label>
+        <select name="question1" required>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">Too many</option>
+        </select>
+        <label for="question2">Have you ever said, "I like dogs more than people."?</label>
+        <div class="radio-box">
+          <div class="radio-answer">
+            <label for="yes">Yes</label>
+            <input type="radio" name="question2" value="1" checked>
+          </div>
+          <div class="radio-answer">
+            <label for="no">No</label>
+            <input type="radio" name="question2" value="0">
+          </div>
+        </div>
+        <label for="question3">Do you go shopping in sweat pants?</label>
+        <div class="radio-box">
+          <div class="radio-answer">
+            <label for="yes">Yes</label>
+            <input type="radio" name="question3" value="1" checked>
+          </div>
+          <div class="radio-answer">
+            <label for="no">No</label>
+            <input type="radio" name="question3" value="0">
+          </div>
+        </div>
+        <label for="question4">Do you to the movie theatre by yourself?</label>
+        <div class="radio-box">
+          <div class="radio-answer">
+            <label for="yes">Yes</label>
+            <input type="radio" name="question4" value="1" checked>
+          </div>
+          <div class="radio-answer">
+            <label for="no">No</label>
+            <input type="radio" name="question4" value="0">
+          </div>
+        </div>
+        <label for="question5">How much ice cream do you eat in one sitting?</label>
+        <select name="question5" required>
+          <option value="0">I don't</option>
+          <option value="1">One scoop</option>
+          <option value="2">One pint</option>
+          <option value="3">One gallon</option>
+          <option value="4">Until the tears go away</option>
+        </select>
+        <label for="question6">Which movie do you enjoy watching the most?</label>
+        <select name="question6" required>
+          <option value="0">Rocky</option>
+          <option value="1">Life Aquatic</option>
+          <option value="2">Avengers</option>
+          <option value="3">Battlefield Earth</option>
+          <option value="4">Evan Almighty</option>
+        </select>
+        <label for="question7">Which artist do you enjoy listening to?</label>
+        <select name="question7" required>
+          <option value="0">Queen</option>
+          <option value="1">Eminem</option>
+          <option value="2">Hoobastank</option>
+          <option value="3">Garth Brookes</option>
+          <option value="4">Chris Gaines</option>
+        </select>
+        <label for="question8">Have you ever pooped?</label>
+        <div class="radio-box">
+          <div class="radio-answer">
+            <label for="yes">Yes</label>
+            <input type="radio" name="question8" value="1" checked>
+          </div>
+          <div class="radio-answer">
+            <label for="no">No</label>
+            <input type="radio" name="question8" value="0">
+          </div>
+        </div>
+        <label for="question9">Do you put ketchup on your hotdog?</label>
+        <div class="radio-box">
+          <div class="radio-answer">
+            <label for="yes">Yes</label>
+            <input type="radio" name="question9" value="1" checked>
+          </div>
+          <div class="radio-answer">
+            <label for="no">No</label>
+            <input type="radio" name="question9" value="0">
+          </div>
+        </div>
+        <label for="question10">Have you ever said "Turkey is delicious, you just have to cook it right."</label>
+        <div class="radio-box">
+          <div class="radio-answer">
+            <label for="yes">Yes</label>
+            <input type="radio" name="question10" value="1" checked>
+          </div>
+          <div class="radio-answer">
+            <label for="no">No</label>
+            <input type="radio" name="question10" value="0">
+          </div>
+        </div>
+        <button class="btn" type="submit">Sign Up</button>
+      </div>
+    </form>
+  </div>
+</main>

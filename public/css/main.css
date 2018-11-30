@@ -1,0 +1,295 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	background-color: rgb(37, 37, 37);
+	color: white;
+}
+
+button:focus {
+	outline: none;
+}
+
+/* header */
+
+/* search */
+
+.header-container {
+	height: 5rem;
+	width: 100vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: black;
+}
+
+.search {
+	display: flex;
+	align-items: center;
+	color: rgb(0, 195, 255);
+	margin-left: 1rem;
+}
+
+.search h1 {
+	font-weight: 100;
+	margin-right: 1rem;
+}
+
+.search-form {
+	display: flex;
+}
+
+.search-form input {
+	font-size: 1.2rem;
+	font-weight: 200;
+	width: 12rem;
+	padding: 0 0.3rem;
+	border-top-left-radius: 0.3rem;
+	border-bottom-left-radius: 0.3rem;
+	border: none;
+}
+
+.search-form input:focus {
+	outline-color: rgb(0, 195, 255);
+}
+
+.search-form button {
+	padding: 0 1rem;
+	font-size: 1rem;
+	font-weight: 100;
+	cursor: pointer;
+	border-bottom-right-radius: 0.3rem;
+	border-top-right-radius: 0.3rem;
+	background-color: black;
+	border: 1px solid rgb(0, 195, 255);
+	color: rgb(0, 195, 255);
+}
+
+.search-form button:hover {
+	background-color: rgb(0, 195, 255);;
+	color: black;
+	transition: all 0.2s;
+}
+
+/* end of search */
+
+/* nav */
+
+.header-nav {
+	margin-right: 1rem;
+}
+
+.nav-list {
+	list-style: none;
+	display: flex;
+}
+
+.nav-items {
+	margin-right: 2rem;
+}
+
+.nav-items a {
+	text-decoration: none;
+	color: white;
+	font-weight: 200;
+	font-size: 1rem;
+}
+
+.nav-items a:hover {
+	color: grey;
+	text-decoration: underline gray;
+	transition: all 0.4s;
+}
+
+/* mobile nav */
+
+.menu-icon {
+	display: none;
+}
+
+.backdrop {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: none;
+}
+
+.mobile {
+	z-index: 10;
+	position: fixed;
+	background-color: rgb(37, 37, 37);
+	top: 0;
+	width: 70%;
+	height: 100vh;
+	max-width: 25rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: all 0.5s ease-out;
+	transform: translateX(-100%);
+}
+
+.mobile.open {
+	transform: translatex(0);
+}
+
+.mobile-logo {
+	font-size: 3rem;
+	color: rgb(0, 195, 255);
+	margin-top: 2rem;
+}
+
+.mobile-search {
+	margin-top: 1rem;
+	position: relative;
+}
+
+.mobile-form input {
+	font-size: 1.2rem;
+	padding: 0.2rem 0.3rem;
+	border-radius: 0.3rem;
+	border: 1px solid gray;
+	font-weight: 200;
+}
+
+.mobile-form input:focus {
+	outline-color: rgb(0, 195, 255);
+}
+
+.mobile-btn {
+	font-size: 1.2rem;
+	border: none;
+	background-color: transparent;
+	position: absolute;
+	top: 0.2rem;
+	right: 0.5rem;
+	cursor: pointer;
+}
+
+.mobile-nav {
+	height: 20rem;
+	margin-top: 2rem;
+}
+
+.mobile-list {
+	height: 100%;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.mobile-items a {
+	text-decoration: none;
+	font-size: 1.1rem;
+	font-weight: 100;
+	color: white;
+	transition: all 0.3s ease-out;
+}
+
+.mobile-items a:hover {
+	color: rgb(0, 195, 255);
+}
+
+.mobile-copyright {
+	margin-top: 7rem;
+	font-size: 0.8rem;
+	color: white;
+	font-weight: 100;
+}
+
+/* end of mobile nav */
+
+/* end of nav */
+
+@media (max-width: 940px) {
+	.header-nav {
+		display: none;
+	}
+
+	.search {
+		margin-right: 1rem;
+	}
+
+	.search-form {
+		display: none;
+	}
+
+	.menu-icon {
+		display: block;
+		color: gray;
+		margin-left: 1rem;
+		font-size: 2.5rem;
+		cursor: pointer;
+	}
+}
+
+/* end of header */
+
+/* footer */
+
+.footer-container {
+	width: 100vw;
+	height: 5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: black;
+	color: white;
+}
+
+.footer-list {
+	display: flex;
+	list-style: none;
+	width: 70%;
+	justify-content: space-around;
+}
+
+.footer-list_item a {
+	text-decoration: none;
+	color: white;
+	font-weight: 100;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+}
+
+.footer-list_item a:hover {
+	text-decoration: underline;
+	text-decoration-color: rgb(0, 195, 255);
+}
+
+.footer-copyright {
+	margin: 0 1.5rem;
+	font-size: 0.8rem;
+	font-weight: 100;
+}
+
+@media (max-width: 850px) {
+	.footer-container {
+		flex-direction: column;
+		justify-content: space-around;
+		height: 8rem;
+	}
+
+	.footer-list {
+		flex-wrap: wrap;
+		width: 90%;
+	}
+
+	.footer-list_item {
+		margin-bottom: 0.5rem;
+	}
+
+	.footer-list_item a {
+		margin: 1rem;
+	}
+}
+
+/* end of footer */

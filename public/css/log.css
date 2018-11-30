@@ -1,0 +1,122 @@
+.log-container {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)),
+		url('https://images.unsplash.com/photo-1494342645198-ff89d7c12b8d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=73fdcd9c18633cb59b75e25d02a852bb&auto=format&fit=crop&w=667&q=80');
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100vw;
+	height: 90vh;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.log-container h1 {
+	font-weight: 200;
+	margin: 5rem 1rem 2rem 1rem;
+	font-size: 2.5rem;
+}
+
+.lonely {
+	color: rgb(0, 195, 255);
+}
+
+.log-card {
+	padding: 1rem;
+	border-radius: 0.3rem;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	font-weight: 100;
+}
+
+.form label,
+.form p {
+	margin-bottom: 0.5rem;
+	letter-spacing: 0.1rem;
+	font-size: 1.3rem;
+}
+
+.form p {
+	margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  align-self: center;
+}
+
+.form input {
+	margin-bottom: 1.5rem;
+	font-size: 1.3rem;
+	border-radius: 0.3rem;
+  border: 1px solid white;
+  padding: 0 .3rem;
+}
+
+.form input:focus {
+	outline: none;
+	border: 1px solid rgb(0, 195, 255);
+}
+
+.form-btn {
+	margin-bottom: 2rem;
+	padding: 0.2rem;
+	font-size: 1rem;
+	width: 8rem;
+	margin: 0 auto;
+	border-radius: 0.3rem;
+	cursor: pointer;
+	letter-spacing: 0.1rem;
+	background-color: rgb(0, 195, 255);
+	border: none;
+	font-weight: 100;
+}
+
+.sign-up_btn {
+	margin-top: 1rem;
+	padding: 0.2rem;
+	font-size: 1rem;
+	width: 8rem;
+	margin: 0 auto;
+	border-radius: 0.3rem;
+	cursor: pointer;
+	letter-spacing: 0.1rem;
+	background-color: rgb(0, 195, 255);
+	border: none;
+	font-weight: 100;
+}
+
+.sign-up_btn:hover,
+.form-btn:hover {
+	background-color:  rgb(0, 92, 121);
+	color: white;
+	transition: all 0.3s;
+}
+
+@media (max-width: 850px) {
+	.log-container h1 {
+		font-size: 1.8rem;
+		font-weight: 100;
+	}
+
+	.form label,
+	.form p {
+		margin-bottom: 0.5rem;
+		letter-spacing: 0.1rem;
+		font-size: 1.3rem;
+  }
+
+  .form p {
+    margin-bottom: 1rem;
+  }
+  
+  .form input {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .log-container h1 {
+    font-size: 1.1rem;
+  }
+}
