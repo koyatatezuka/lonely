@@ -1,14 +1,15 @@
-// Update with your config settings.
+const { host, user, password, database } = require('./config/db_configuration')
 
 module.exports = {
 
   development: {
     client: 'pg',
     connection: {
-      host: 'localhost',
-      user: 'lonely_user',
-      password: 'zookiezooks1',
-      charset: 'utf8'
+      host,
+      user,
+      password,
+      charset: 'utf8',
+      database
     },
     migrations: {
       directory: __dirname + '/knex/migrations'

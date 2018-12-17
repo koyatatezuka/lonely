@@ -1,19 +1,20 @@
-const knex = require('../knex/knex');
+const knex = require('../../knex/knex');
 const {
 	getAge,
 	getPreferedGender,
 	getPreferedSexualPreference
-} = require('../util/helper');
+} = require('../../util/helper');
 
-// handle root home get request
-exports.getHome = async (req, res) => {
+// handle user suggestion get request
+exports.getSuggestions = async (req, res) => {
 	let preferedGender = ['male', 'female'];
 	let preferedSexualPreference = ['straight', 'gayLesbian', 'biSexual'];
-	const isSignIn = true;
-
-	if (!isSignIn) return res.redirect('/log');
 
 	const user = req.user;
+
+  // find user age with helper function
+	const age = getAge(user.dob);
+
 
 	// get prefered gender and sexual preference
 	preferedGender = getPreferedGender(user.gender, user.sexualPreference);
@@ -33,14 +34,14 @@ exports.getHome = async (req, res) => {
 		.whereNotIn('id', exclude)
 		.whereNot({ id: user.id })
 		.limit(10);
-	// find user age with helper function
-	const age = getAge(user.dob);
 
-	res.render('home', {
-		pageTitle: 'Home',
-		homeCss: true,
+	res.render('user', {
+		pageTitle: 'Suggestions',
+		userCss: true,
+		suggestions: true,
 		user,
 		age,
-		suggestionCount: suggestion.length
+    suggestion,
+    suggestionCount: suggestion.length,
 	});
 };

@@ -1,0 +1,422 @@
+/* main container */
+
+.main-container {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgb(37, 37, 37);
+	display: flex;
+}
+
+.profile-container {
+	width: 25vw;
+	height: 100vh;
+	background-color: rgb(27, 27, 27);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.profile-pic img {
+	margin: 1rem auto;
+	border-radius: 50%;
+	height: 10rem;
+	width: 10rem;
+	max-width: 10rem;
+	max-height: 10rem;
+}
+
+.profile-info p {
+	font-weight: 100;
+	margin: 0.5rem 0;
+	color: rgb(170, 170, 170);
+}
+
+.profile-nav {
+	margin-top: 2rem;
+}
+
+.profile-list {
+	list-style: none;
+	height: 12rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.profile-items {
+	position: relative;
+}
+
+.profile-items a {
+	text-decoration: none;
+	color: white;
+	font-weight: 200;
+}
+
+.profile-items a:hover {
+	color: rgb(0, 195, 255);
+	transition: all 0.3s;
+}
+
+.profile-items a::before {
+	position: absolute;
+	content: '>>';
+	color: transparent;
+	top: 0;
+	left: -2rem;
+}
+
+.profile-items a:hover::before {
+	color: rgb(0, 195, 255);
+	transition: all 0.3s;
+}
+
+.number {
+	color: rgb(0, 195, 255);
+}
+
+.users-container {
+	min-height: 100vh;
+	width: 75vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: auto;
+}
+
+/* end of main container */
+
+/* suggestions */
+
+.users-header {
+	font-weight: 200;
+	letter-spacing: 0.1rem;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	color: rgb(170, 170, 170);
+}
+
+.suggestion-card {
+	display: flex;
+	margin: 1rem 0;
+	min-height: 8rem;
+	width: 22rem;
+	background-color: black;
+	border-radius: 0.3rem;
+}
+
+.suggestion-image {
+	height: 100%;
+	width: 8rem;
+	max-width: 8rem;
+	max-height: 100%;
+	border-top-left-radius: 0.3rem;
+	border-bottom-left-radius: 0.3rem;
+}
+
+.suggestion-user {
+	font-weight: 200;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin-left: 1rem;
+}
+
+.suggestion-card a {
+	overflow: hidden;
+}
+
+.suggestion-image:hover {
+	transform: scale(1.1);
+	transition: all 0.3s;
+}
+
+/* end of suggestions */
+
+/* user profile */
+
+/* not partner */
+
+.partner-card {
+	background-color: black;
+	padding: 2rem 1rem;
+	margin-top: 1rem;
+	border-radius: 0.3rem;
+	color: rgb(170, 170, 170);
+}
+
+.partner-info {
+	display: flex;
+	align-items: center;
+}
+
+.user-profile_img {
+	width: 15rem;
+	height: 15rem;
+	border-radius: 50%;
+}
+
+.partner-detail {
+	margin-left: 1rem;
+	line-height: 2.5rem;
+	font-weight: 200;
+}
+
+.partner-additional_detail {
+	font-weight: 200;
+	line-height: 2rem;
+	margin-left: 2rem;
+	max-width: 10rem;
+}
+
+.partner-additional_detail h2 {
+	font-weight: 200;
+	letter-spacing: 0.1rem;
+	color: rgb(170, 170, 170);
+}
+
+.partner-card form {
+	margin-top: 0.5rem;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.unPartner-btn,
+.partner-btn {
+	font-weight: 200;
+	font-size: 1.5rem;
+	border: none;
+	color: rgb(230, 230, 230);
+	background-color: transparent;
+	letter-spacing: 0.1rem;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.pending {
+	margin-top: 0.5rem;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	letter-spacing: 0.1rem;
+}
+
+.pending h2 {
+	font-weight: 200;
+}
+
+.partner-btn:hover {
+	letter-spacing: 0.2rem;
+	color: rgb(0, 195, 255);
+}
+
+.unPartner-btn:hover {
+	letter-spacing: 0.2rem;
+	color: rgb(255, 0, 85);
+}
+
+.partner-additional_mobile {
+	display: none;
+}
+
+@media (max-width: 700px) {
+	.partner-card {
+		background-color: transparent;
+		color: white;
+	}
+
+	.user-profile_img {
+		width: 12rem;
+		height: 12rem;
+	}
+
+	.partner-additional_detail {
+		display: none;
+	}
+
+	.partner-additional_mobile {
+    display: flex;
+    flex-direction: column;
+		font-weight: 200;
+		line-height: 2rem;
+		margin-left: 1rem;
+    max-width: 15rem;
+    margin-top: .5rem;
+  }
+  
+  .partner-additional_mobile h2{
+    font-weight: 200;
+    letter-spacing: .1rem;
+    color: rgb(170, 170, 170);
+  }
+
+	.unPartner-btn {
+		color: rgb(255, 0, 85);
+	}
+
+	.partner-btn {
+		color: rgb(0, 195, 255);
+	}
+}
+
+/* end of not partner */
+
+/* partner */
+
+.comment-feed {
+	width: 30vw;
+	min-height: 900px;
+	margin: 5rem;
+	background-image: url('https://cdn.yoox.biz/items/49/49354482wf_13_f.jpg');
+}
+
+/* end of partner */
+
+/* end of user profile */
+
+/* requests */
+
+.request-card {
+	display: flex;
+	margin: 1rem 0;
+	min-height: 8rem;
+	width: 22rem;
+	background-color: black;
+	border-radius: 0.3rem;
+}
+
+.request-image {
+	height: 100%;
+	width: 8rem;
+	max-width: 8rem;
+	max-height: 100%;
+	border-top-left-radius: 0.3rem;
+	border-bottom-left-radius: 0.3rem;
+}
+
+.request-user {
+	font-weight: 200;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin-left: 1rem;
+}
+
+.request-card a {
+	overflow: hidden;
+}
+
+.request-image:hover {
+	transform: scale(1.1);
+	transition: all 0.3s;
+}
+
+.requests-responses {
+	display: flex;
+	justify-content: space-between;
+}
+
+.accept-btn,
+.decline-btn {
+	font-size: 1rem;
+	font-weight: 100;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	transition: all .3s;
+}
+
+.accept-btn {
+	color: rgb(0, 195, 255)
+}
+
+.decline-btn {
+	color: rgb(255, 97, 97)
+}
+
+.accept-btn:hover {
+	color: rgb(170, 170, 170);
+}
+
+.decline-btn:hover {
+	color: rgb(170, 170, 170);
+}
+
+/* end of requests */
+
+/* lonely partners */
+
+.partners-container {
+	min-height: 100vh;
+	width: 75vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: auto;
+}
+
+.partners-content {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	padding: 1rem 2rem;
+}
+
+.partners-card {
+	display: flex;
+	border-radius: 0.3rem;
+	flex-direction: column;
+	align-items: center;
+	min-width: 10rem;
+	min-height: 10rem;
+	margin-left: 2rem;
+	margin-top: 1rem;
+}
+
+.partners-image {
+	height: 8rem;
+	width: 8rem;
+	max-width: 8rem;
+	max-height: 8rem;
+	border-radius: .3rem;
+}
+
+.partners-user {
+	font-weight: 200;
+	text-align: center;
+	margin-top: .5rem;
+}
+
+.partners-card a {
+	overflow: hidden;
+}
+
+.partners-image:hover {
+	transform: scale(1.1);
+	transition: all 0.3s;
+}
+
+.partners-card:hover {
+	transition: all .3s;
+	color: rgb(170, 170, 170);
+}
+
+
+/* end of lonely partners */
+
+@media (max-width: 940px) {
+	.users-container {
+		width: 100vw;
+	}
+
+	.partners-container {
+		width: 100vw;
+	}
+
+	.profile-container {
+		display: none;
+	}
+}
