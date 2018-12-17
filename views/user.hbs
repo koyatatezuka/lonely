@@ -1,0 +1,10 @@
+{{> nav}}
+{{#if suggestions}}
+  {{> suggestion}}
+{{else if userProfiles}}
+  {{> userProfile}}
+{{else if requests}}
+  {{> requests}}
+{{else if partners}}
+  {{> partners}}    
+{{/if}}

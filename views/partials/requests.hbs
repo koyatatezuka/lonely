@@ -1,0 +1,54 @@
+<main class="main-container">
+  <div class="profile-container">
+    <div class="profile-pic">
+      <img src="{{user.image}}" alt="empty">
+    </div>
+    <div class="profile-info">
+      <p>{{user.firstName}} {{user.lastName}}</p>
+      <p>{{age}} years old</p>
+      <p>Lonely Level: {{user.lonelyLevel}}</p>
+    </div>
+    <div class="profile-nav">
+      <ul class="profile-list">
+        <li class="profile-items">
+          <a href="/profile">Profile</a>
+        </li>
+        <li class="profile-items">
+          <a href="/user/requests">Lonely Requests</a>
+        </li>
+        <li class="profile-items">
+          <a href="/user/partners">Lonely Partners</a>
+        </li>
+        <li class="profile-items">
+          <a href="/user/suggestions">{{#if suggestionCount}}Suggestions(<span class="number"> {{suggestionCount}} </span>){{else}}Suggestions{{/if}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="users-container">
+    <h1 class="users-header">Lonely Request</h1>
+    {{#each userRequests}}
+      <div class="request-card">
+        <a href="/user/byuser/{{this.id}}"><img class="request-image" src="{{this.image}}" alt="{{this.firstName}}"></a>
+        <div class="request-user">
+          <p>{{this.firstName}} {{this.lastName}}</p>
+          <p>{{this.sexualPreference}}, {{this.gender}}</p>
+          <p>Lonely Level: {{this.lonelyLevel}}</p>
+          <p>{{this.city}}, {{this.state}}</p>
+          <div class="requests-responses">
+            <form action="/user/requests/response" method="POST">
+              <button class="accept-btn">Accept</button>
+              <input type="text" name="response" value="accept" hidden>
+              <input type="text" name="partnerId" value="{{this.partnerId}}" hidden>
+            </form>
+            <form action="/user/requests/response" method="POST">
+              <button class="decline-btn">Decline</button>
+              <input type="text" name="response" value="decline" hidden>
+              <input type="text" name="partnerId" value="{{this.partnerId}}" hidden>
+            </form>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</main>

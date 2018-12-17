@@ -1,24 +1,23 @@
-const knex = require('../knex/knex');
+const knex = require('../../knex/knex');
 const {
 	getAge,
 	getPreferedGender,
 	getPreferedSexualPreference
-} = require('../util/helper');
+} = require('../../util/helper');
 
-// handle root home get request
-exports.getHome = async (req, res) => {
+// handle get request for user profile by id
+exports.getUserProfile = async (req, res) => {
 	let preferedGender = ['male', 'female'];
 	let preferedSexualPreference = ['straight', 'gayLesbian', 'biSexual'];
-	const isSignIn = true;
-
-	if (!isSignIn) return res.redirect('/log');
 
 	const user = req.user;
+
+	// find user age with helper function
+	const age = getAge(user.dob);
 
 	// get prefered gender and sexual preference
 	preferedGender = getPreferedGender(user.gender, user.sexualPreference);
 	preferedSexualPreference = getPreferedSexualPreference(user.sexualPreference);
-
 	// find all requested users and partners and concat into single array
 	const requested = await knex('requests').select('partnerId').where({ userId: user.id })
 	const partner = await knex('partners').select('partnerId').where({ userId: user.id })
@@ -33,14 +32,33 @@ exports.getHome = async (req, res) => {
 		.whereNotIn('id', exclude)
 		.whereNot({ id: user.id })
 		.limit(10);
-	// find user age with helper function
-	const age = getAge(user.dob);
+  // the chosen profile by id 
+  const userById = await knex('users').where({ id: req.params.id })
+  // profile age
+  const profileAge = getAge(userById[0].dob)
 
-	res.render('home', {
-		pageTitle: 'Home',
-		homeCss: true,
+	// check if request is pending
+	const pending = await knex('requests').where({
+		userId: user.id,
+		partnerId: req.params.id
+	})
+
+	// check if is partner
+	const isPartner = await knex('partners').where({
+		userId: user.id,
+		partnerId: req.params.id
+	})
+
+	res.render('user', {
+		pageTitle: 'userName',
+		userCss: true,
+		userProfiles: true,
 		user,
 		age,
-		suggestionCount: suggestion.length
+    profileAge,
+    suggestionCount: suggestion.length,
+		userById: userById[0],
+		pending: pending.length > 0,
+    isPartner: isPartner.length > 0
 	});
 };

@@ -1,0 +1,51 @@
+{{> nav}}
+<main class="profile-container">
+  <h1>Edit Profile</h1>
+  <div class="profile-card">
+    <form class="form" action="/profile/upload" method="POST" enctype="multipart/form-data">
+      <div class="user">
+        <h2>Profile Image</h2>
+        <label for="image">Image</label>
+        <input type="file" name="image" accept="image/png, image/jpeg" required>
+        <button class="btn" type="submit">Edit</button>
+      </div>
+    </form>
+    <form class="form" action="/profile" method="POST">
+      <div class="user">
+        <h2>User Information</h2>
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" value="{{user.firstName}}" required>
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" value="{{user.lastName}}" required>
+      </div>
+      <div class="user">
+        <h2>Location</h2>
+        <label for="city">City</label>
+        <input type="text" name="city" value="{{user.city}}"required>
+        <label for="state">State</label>
+        <input type="text" name="state" value="{{user.state}}" required>
+      </div>
+      <div class="user">
+        <h2>About Me</h2>
+        <label for="gender">Gender</label>
+        <select name="gender">
+          <option value="male" {{#if male}}selected{{/if}}>Male</option>
+          <option value="female" {{#if female}}selected{{/if}}>Female</option>
+        </select>
+        <label for="sexualPreference">Sexual Preference</label>
+        <select name="sexualPreference">
+          <option value="straight" {{#if straight}}selected{{/if}}>Straight</option>
+          <option value="gayLesbian" {{#if gayLesbian}}selected{{/if}}>Gay/Lesbian</option>
+          <option value="biSexual" {{#if biSexual}}selected{{/if}}>Bisexual</option>
+        </select>
+        <label for="likes">Likes</label>
+        <input type="text" name="likes" value="{{user.likes}}" required>
+        <label for="dislikes">Dislikes</label>
+        <input type="text" name="dislikes" value="{{user.dislikes}}" required>
+        <label for="hobbies">Hobbies</label>
+        <textarea name="hobbies" >{{user.hobbies}}</textarea>
+        <button class="btn" type="submit">Edit</button>
+      </div>
+    </form>
+  </div>
+</main>
