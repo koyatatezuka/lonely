@@ -3,5 +3,6 @@ module.exports = {
 	log: require('./log'),
 	register: require('./register'),
 	profile: require('./profile'),
-	user: require('./user')
+	user: require('./user'),
+	post: require('./post')
 };

@@ -82,8 +82,9 @@
 .feed-container {
 	height: 100vh;
 	width: 75vw;
-	display: flex;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+	align-items: center;
 	overflow: auto;
 }
 
@@ -167,3 +168,118 @@
 }
 
 /* end of post */
+
+/* comment/reply */
+
+.post-feed {
+  width: 100%;
+}
+
+.comment {
+  width: 21rem;
+  background: black;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: .3rem;
+  overflow: auto;
+  max-height: 30rem;
+}
+
+.comment p {
+  color: rgb(170, 170, 170);
+  font-weight: 200;
+  margin-bottom: .5rem;
+}
+
+.created-at {
+  font-size: .9rem;
+}
+
+.post-reply {
+  display: flex;
+  flex-direction: column;
+  margin: .5rem 0;
+}
+
+.post-comment_delete button {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: 100;
+  color: rgb(255, 59, 59);
+  cursor: pointer;
+}
+
+.post-reply textarea {
+  resize: none;
+  height: 5rem;
+  padding: .5rem;
+  font-size: 1rem;
+  border-radius: .3rem;
+}
+
+.post-reply textarea:focus {
+  outline-color: rgb(0, 195, 255);
+}
+
+.post-reply button {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: 100;
+  color: rgb(0, 195, 255);
+  cursor: pointer;
+  margin-top: .5rem;
+}
+
+.post-reply button:hover,
+.post-comment_delete button:hover {
+  transition: all .3s;
+  letter-spacing: .1rem;
+}
+
+.reply {
+  display: flex;
+  margin: .5rem 0;
+}
+
+.user-img_name {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-img_name img {
+  width: 7rem;
+  height: 7rem;
+  max-height: 7rem;
+  max-width: 7rem;  
+}
+
+.user-img_name p {
+  margin: .3rem 0;
+}
+
+.reply-info {
+  margin-left: 1rem;
+}
+
+.user-reply {
+  max-height: 6rem;
+  overflow: auto;
+}
+
+.post-reply_delete button {
+  font-weight: 100;
+  background-color: transparent;
+  border: none;
+  font-size: .9rem;
+  color: rgb(255, 59, 59);
+  cursor: pointer;
+}
+
+.post-reply_delete button:hover {
+  letter-spacing: .1rem;
+  transition: all .3s;
+}
+
+/* end of comment/reply */

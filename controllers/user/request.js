@@ -42,7 +42,9 @@ exports.getRequests = async (req, res) => {
 	// find all requests
 	const userRequests = await knex('requests')
 		.join('users', { 'users.id': 'partnerId' })
-		.where({ userId: user.id });
+		.where({ userId: user.id })
+		.whereNot({ userId: user.id });
+
 
 	res.render('user', {
 		pageTitle: 'Lonely Requests',
@@ -57,7 +59,6 @@ exports.getRequests = async (req, res) => {
 
 // handle post request for partner request
 exports.postPartnerRequest = async (req, res) => {
-
 	if (req.body.requestType === 'partner') {
 		const request = await knex('requests').insert({
 			userId: req.user.id,
@@ -65,18 +66,17 @@ exports.postPartnerRequest = async (req, res) => {
 		});
 	} else if (req.body.requestType === 'unPartner') {
 		const deletedPartner = await knex('partners')
-			.where({ 
+			.where({
 				userId: req.user.id,
 				partnerId: req.body.partnerId
-			 })
+			})
 			.orWhere({
 				userId: req.body.partnerId,
 				partnerId: req.user.id
 			})
-			.del()
+			.del();
 	}
-	
-	
+
 	res.redirect(`/user/byuser/${req.body.partnerId}`);
 };
 

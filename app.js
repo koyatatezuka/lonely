@@ -4,7 +4,7 @@ const handlebars = require('express-handlebars');
 const path = require('path');
 
 const knex = require('./knex/knex');
-const { home, log, register, profile, user } = require('./routes/index');
+const { home, log, register, profile, user, post } = require('./routes/index');
 const get404 = require('./controllers/error');
 
 const app = express();
@@ -46,6 +46,7 @@ app.use('/log', log);
 app.use('/register', register);
 app.use('/profile', profile);
 app.use('/user', user);
+app.use('/post', post);
 
 // handle 404 error
 app.use(get404);

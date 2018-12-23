@@ -2,7 +2,8 @@ const knex = require('../knex/knex');
 const {
 	getAge,
 	getPreferedGender,
-	getPreferedSexualPreference
+	getPreferedSexualPreference,
+	getDate
 } = require('../util/helper');
 
 // handle root home get request
@@ -20,12 +21,16 @@ exports.getHome = async (req, res) => {
 	preferedSexualPreference = getPreferedSexualPreference(user.sexualPreference);
 
 	// find all requested users and partners and concat into single array
-	const requested = await knex('requests').select('partnerId').where({ userId: user.id })
-	const partner = await knex('partners').select('partnerId').where({ userId: user.id })
+	const requested = await knex('requests')
+		.select('partnerId')
+		.where({ userId: user.id });
+	const partner = await knex('partners')
+		.select('partnerId')
+		.where({ userId: user.id });
 	let exclude = [...requested, ...partner];
-	exclude = exclude.map(users => users.partnerId)
+	exclude = exclude.map(users => users.partnerId);
 
-  // find all other users within -+5 of user lonely level. Account for gender preference and sexual orientation
+	// find all other users within -+5 of user lonely level. Account for gender preference and sexual orientation
 	const suggestion = await knex('users')
 		.whereBetween('lonelyLevel', [user.lonelyLevel - 5, user.lonelyLevel + 5])
 		.whereIn('gender', preferedGender)
@@ -36,11 +41,50 @@ exports.getHome = async (req, res) => {
 	// find user age with helper function
 	const age = getAge(user.dob);
 
+	// find all comments
+	const comments = await knex('comments')
+		.where({ userId: user.id })
+		.orderBy('created_at', 'desc');
+	// convert created_at Date into usable format
+	comments.forEach(obj => (obj.created_at = getDate(obj.created_at)));
+	// find all replies
+	const replies = await knex('replies')
+		.join('users', 'users.id', 'replies.userId')
+		.whereIn('commentId', comments.map(el => el.id))
+		.select(
+			'replies.id',
+			'replies.reply',
+			'replies.userId',
+			'replies.created_at',
+			'replies.commentId',
+			'users.firstName',
+			'users.lastName',
+			'users.image'
+		)
+		.orderBy('replies.created_at', 'desc');
+	// convert created_at Date into usable format and convert last name to first letter
+	replies.forEach(obj => {
+		obj.created_at = getDate(obj.created_at)
+		obj.lastName = obj.lastName.charAt(0)
+	});
+
+	// add array of replies onto comments 
+	comments.forEach(com => {
+		com.replies = []
+
+		replies.forEach(rep => {
+			if (rep.commentId == com.id) {
+				com.replies.push(rep)
+			}
+		})
+	})
+
 	res.render('home', {
 		pageTitle: 'Home',
 		homeCss: true,
 		user,
 		age,
+		comments,
 		suggestionCount: suggestion.length
 	});
 };
