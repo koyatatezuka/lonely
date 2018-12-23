@@ -28,13 +28,47 @@
   </div>
   <div class="feed-container">
     <div class="post-card">
-      <form class="post-form" action="/post" method="POST">
+      <form class="post-form" action="/post/comment" method="POST">
         <div class="pic-post">
           <img src="{{user.image}}" alt="empty">
-          <textarea name="post" cols="30" rows="10" placeholder="How lonely are you today?" required></textarea>
+          <textarea name="comment" cols="30" rows="10" maxlength="1000" placeholder="How lonely are you today?" required></textarea>
         </div>
         <button class="post-btn">POST</button>
       </form>
+    </div>
+    <div class="post-feed">
+      {{#each comments}}
+        <div class="comment">
+          <p class="created-at">{{this.created_at}}</p>
+          <p>{{this.comment}}</p>
+          <form class="post-comment_delete" action="/post/comment/delete" method="POST">
+          <input type="text" name="commentId" value="{{this.id}}" hidden>
+            <button>Delete Comment</button>
+          </form>        
+          <form class="post-reply" action="/post/reply" method="POST">
+          <input type="text" name="commentId" value="{{this.id}}" hidden>
+          <input type="text" name="userId" value="{{../user.id}}" hidden>
+            <textarea name="reply" cols="30" rows="10" maxlength="255" placeholder="Reply..."></textarea>
+            <button>Reply</button>
+          </form>
+          {{#each this.replies}}
+            <div class="reply">
+              <div class="user-img_name">
+                <a href="/user/byuser/{{this.userId}}"><img src="{{this.image}}" alt="{{this.firstName}}"></a>
+                <p>{{this.firstName}} {{this.lastName}}.</p>
+              </div>
+              <div class="reply-info">
+                <p class="created-at">{{this.created_at}}</p>
+                <p class="user-reply">{{this.reply}}</p>
+                <form class="post-reply_delete" action="/post/reply/delete" method="POST">
+                  <input type="text" name="replyId" value="{{this.id}}" hidden>
+                  <button>Delete Reply</button>
+                </form>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{/each}}
     </div>
   </div>
 </main>

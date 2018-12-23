@@ -45,8 +45,6 @@ exports.getPartners = async (req, res) => {
     .where({ userId: user.id })
     .orWhere({ partnerId: user.id })
     
-
-    console.log(userPartners)
 	res.render('user', {
 		pageTitle: 'Lonely Partners',
 		userCss: true,

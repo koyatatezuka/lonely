@@ -37,3 +37,12 @@ exports.getPreferedSexualPreference = userSexualPreference => {
 		return ['straight', 'biSexual', 'gayLesbian'];
 	}
 };
+
+// return date in xx/xx/xxxx form
+exports.getDate = date => {
+	const day = date.getDate();
+	const month = date.getMonth() + 1;
+	const year = date.getFullYear()
+
+	return `${month}/${day}/${year}`
+}
