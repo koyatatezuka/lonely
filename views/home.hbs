@@ -15,7 +15,7 @@
           <a href="/profile">Profile</a>
         </li>
         <li class="profile-items">
-          <a href="user/requests">Lonely Requests</a>
+          <a href="user/requests">{{#if requestCount}}Lonely Requests(<span class="number"> {{requestCount}} </span>){{else}}Lonely Requests{{/if}}</a>
         </li>
         <li class="profile-items">
           <a href="user/partners">Lonely Partners</a>

@@ -14,7 +14,7 @@
           <a href="/profile">Profile</a>
         </li>
         <li class="profile-items">
-          <a href="/user/requests">Lonely Requests</a>
+          <a href="/user/requests">{{#if requestCount}}Lonely Requests(<span class="number"> {{requestCount}} </span>){{else}}Lonely Requests{{/if}}</a>
         </li>
         <li class="profile-items">
           <a href="/user/partners">Lonely Partners</a>
@@ -59,22 +59,92 @@
         <input type="text" name="partnerId" value="{{userById.id}}" hidden>
         <input type="text" name="requestType" value="unPartner" hidden>
       </form>
-      {{else}}
-      {{#if pending}}
+      {{else if pending}}
       <div class="pending">
         <h2>Pending...</h2>
       </div>
+      {{else if isUserProfile}}
+      {{!-- Nothing here --}}
       {{else}}
       <form action="/user/requests" method="POST">
         <button class="partner-btn">Partner</button>
         <input type="text" name="partnerId" value="{{userById.id}}" hidden>
         <input type="text" name="requestType" value="partner" hidden>
       </form>
-      {{/if}} {{/if}}
+      {{/if}} 
     </div>
     {{#if isPartner}}
     <div class="comment-feed">
-      
+      {{#each comments}}
+        <div class="comment">
+          <p class="created-at">{{this.created_at}}</p>
+          <p>{{this.comment}}</p>
+                 
+          <form class="post-reply" action="/post/partnerreply" method="POST">
+          <input type="text" name="commentId" value="{{this.id}}" hidden>
+          <input type="text" name="userId" value="{{../user.id}}" hidden>
+          <input type="text" name="partnerId" value="{{../userById.id}}" hidden>
+            <textarea name="reply" cols="30" rows="10" maxlength="255" placeholder="Reply..."></textarea>
+            <button>Reply</button>
+          </form>
+          {{#each this.replies}}
+            <div class="reply">
+              <div class="user-img_name">
+                <a href="/user/byuser/{{this.userId}}"><img src="{{this.image}}" alt="{{this.firstName}}"></a>
+                <p>{{this.firstName}} {{this.lastName}}.</p>
+              </div>
+              <div class="reply-info">
+                <p class="created-at">{{this.created_at}}</p>
+                <p class="user-reply">{{this.reply}}</p>
+                {{#if this.isOwnPost}}
+                <form class="post-reply_delete" action="/post/partnerreply/delete" method="POST">
+                  <input type="text" name="replyId" value="{{this.id}}" hidden>
+                  <input type="text" name="partnerId" value="{{../../userById.id}}" hidden>
+                  <button>Delete Reply</button>
+                </form>
+                {{/if}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{/each}}
+    </div>
+    {{/if}}
+    {{#if isUserProfile}}
+      <div class="comment-feed">
+      {{#each comments}}
+        <div class="comment">
+          <p class="created-at">{{this.created_at}}</p>
+          <p>{{this.comment}}</p>
+                 
+          <form class="post-reply" action="/post/partnerreply" method="POST">
+          <input type="text" name="commentId" value="{{this.id}}" hidden>
+          <input type="text" name="userId" value="{{../user.id}}" hidden>
+          <input type="text" name="partnerId" value="{{../userById.id}}" hidden>
+            <textarea name="reply" cols="30" rows="10" maxlength="255" placeholder="Reply..."></textarea>
+            <button>Reply</button>
+          </form>
+          {{#each this.replies}}
+            <div class="reply">
+              <div class="user-img_name">
+                <a href="/user/byuser/{{this.userId}}"><img src="{{this.image}}" alt="{{this.firstName}}"></a>
+                <p>{{this.firstName}} {{this.lastName}}.</p>
+              </div>
+              <div class="reply-info">
+                <p class="created-at">{{this.created_at}}</p>
+                <p class="user-reply">{{this.reply}}</p>
+                {{#if this.isOwnPost}}
+                <form class="post-reply_delete" action="/post/partnerreply/delete" method="POST">
+                  <input type="text" name="replyId" value="{{this.id}}" hidden>
+                  <input type="text" name="partnerId" value="{{../../userById.id}}" hidden>
+                  <button>Delete Reply</button>
+                </form>
+                {{/if}}
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{/each}}
     </div>
     {{/if}}
   </div>

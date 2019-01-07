@@ -25,30 +25,17 @@
       </ul>
     </div>
   </div>
-  <div class="users-container">
-    <h1 class="users-header">Lonely Request</h1>
-    {{#each userRequests}}
-      <div class="request-card">
-        <a href="/user/byuser/{{this.id}}"><img class="request-image" src="{{this.image}}" alt="{{this.firstName}}"></a>
-        <div class="request-user">
+  <div class="partners-container">
+    <h1 class="users-header">Searching {{searchParams}}...</h1>
+    <div class="partners-content">
+    {{#each searchUsers}}
+      <div class="partners-card">
+        <a href="/user/byuser/{{this.id}}"><img class="partners-image" src="{{this.image}}" alt="{{this.firstName}}"></a>
+        <div class="partners-user">
           <p>{{this.firstName}} {{this.lastName}}</p>
-          <p>{{this.sexualPreference}}, {{this.gender}}</p>
-          <p>Lonely Level: {{this.lonelyLevel}}</p>
-          <p>{{this.city}}, {{this.state}}</p>
-          <div class="requests-responses">
-            <form action="/user/requests/response" method="POST">
-              <button class="accept-btn">Accept</button>
-              <input type="text" name="response" value="accept" hidden>
-              <input type="text" name="partnerId" value="{{this.userId}}" hidden>
-            </form>
-            <form action="/user/requests/response" method="POST">
-              <button class="decline-btn">Decline</button>
-              <input type="text" name="response" value="decline" hidden>
-              <input type="text" name="partnerId" value="{{this.userId}}" hidden>
-            </form>
-          </div>
         </div>
       </div>
     {{/each}}
+    </div>
   </div>
 </main>

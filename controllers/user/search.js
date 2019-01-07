@@ -1,13 +1,12 @@
 const knex = require('../../knex/knex');
-
 const {
 	getAge,
 	getPreferedGender,
 	getPreferedSexualPreference
 } = require('../../util/helper');
 
-// handle get request for partner
-exports.getPartners = async (req, res) => {
+// handle user search get request
+exports.postSearch = async (req, res) => {
 	let preferedGender = ['male', 'female'];
 	let preferedSexualPreference = ['straight', 'gayLesbian', 'biSexual'];
 
@@ -23,7 +22,8 @@ exports.getPartners = async (req, res) => {
 	// find all requested users and partners and concat into single array
 	const requested = await knex('requests')
 		.select('partnerId')
-		.where({ userId: user.id });
+		.where({ userId: user.id })
+		
 	const partner = await knex('partners')
 		.select('partnerId')
 		.where({ userId: user.id });
@@ -39,22 +39,26 @@ exports.getPartners = async (req, res) => {
 		.whereNot({ id: user.id })
 		.limit(10);
 
-	// find all partners
-	const userPartners = await knex('partners')
-		.join('users', { 'users.id': 'partnerId' })
-		.where({ userId: user.id })
-		.orWhere({ partnerId: user.id });
-
 	// find all request for partner by id
 	const partnerRequest = await knex('requests').where({ partnerId: user.id });
 
+	// split the search params into array of RegExp
+	const searchArray = (req.body.search).split(' ').map(el => el.charAt(0).toUpperCase() + el.substr(1))
+	// find all users that match search params
+	const searchUsers = await knex('users')
+		.whereIn('firstName', searchArray)
+		.orWhereIn('lastName', searchArray)
+
+	console.log(searchUsers)
+
 	res.render('user', {
-		pageTitle: 'Lonely Partners',
+		pageTitle: 'Search',
 		userCss: true,
-		partners: true,
+		search: true,
 		user,
 		age,
-		userPartners,
+		searchUsers,
+    searchParams: req.body.search,
 		suggestionCount: suggestion.length,
 		requestCount: partnerRequest.length
 	});

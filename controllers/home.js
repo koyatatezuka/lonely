@@ -64,20 +64,23 @@ exports.getHome = async (req, res) => {
 		.orderBy('replies.created_at', 'desc');
 	// convert created_at Date into usable format and convert last name to first letter
 	replies.forEach(obj => {
-		obj.created_at = getDate(obj.created_at)
-		obj.lastName = obj.lastName.charAt(0)
+		obj.created_at = getDate(obj.created_at);
+		obj.lastName = obj.lastName.charAt(0);
 	});
 
-	// add array of replies onto comments 
+	// add array of replies onto comments
 	comments.forEach(com => {
-		com.replies = []
+		com.replies = [];
 
 		replies.forEach(rep => {
 			if (rep.commentId == com.id) {
-				com.replies.push(rep)
+				com.replies.push(rep);
 			}
-		})
-	})
+		});
+	});
+
+	// find all request for partner by id
+	const partnerRequest = await knex('requests').where({ partnerId: user.id });
 
 	res.render('home', {
 		pageTitle: 'Home',
@@ -85,6 +88,7 @@ exports.getHome = async (req, res) => {
 		user,
 		age,
 		comments,
-		suggestionCount: suggestion.length
+		suggestionCount: suggestion.length,
+		requestCount: partnerRequest.length
 	});
 };
