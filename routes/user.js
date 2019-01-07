@@ -2,12 +2,13 @@ const { Router } = require('express');
 
 const { getSuggestions } = require('../controllers/user/suggestions');
 const { getUserProfile } = require('../controllers/user/userProfile');
-const { 
-  postPartnerRequest,
-  postRequestResponse, 
-  getRequests } 
-  = require('../controllers/user/request');
+const {
+	postPartnerRequest,
+	postRequestResponse,
+	getRequests
+} = require('../controllers/user/request');
 const { getPartners } = require('../controllers/user/partner');
+const { getSearch, postSearch } = require('../controllers/user/search');
 
 const router = Router();
 
@@ -23,5 +24,7 @@ router.post('/requests', postPartnerRequest);
 router.post('/requests/response', postRequestResponse);
 // handle get request for partner request
 router.get('/partners', getPartners);
+// handle post request user search
+router.post('/search', postSearch);
 
 module.exports = router;

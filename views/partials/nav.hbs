@@ -12,7 +12,7 @@
     <h1>Lonely
       <i class="fas fa-cat"></i>
     </h1>
-    <form class="search-form" action="/search" method="POST">
+    <form class="search-form" action="/user/search" method="POST">
       <input type="text" name="search" placeholder="Name...">
       <button class="search-btn">Find</button>
     </form>
@@ -27,9 +27,6 @@
         <a href="/message">Message</a>
       </li>
       <li class="nav-items">
-        <a href="/chat">Chat</a>
-      </li>
-      <li class="nav-items">
         <a href="/log/out">Log Out</a>
       </li>
     </ul>
@@ -41,7 +38,7 @@
       <i class="fas fa-cat"></i>
     </div>
     <div class="mobile-search">
-      <form class="mobile-form" action="/search" method="POST">
+      <form class="mobile-form" action="/user/search" method="POST">
         <input type="text" name="search" placeholder="Name...">
         <button class="mobile-btn"><i class="fas fa-search"></i></button>
       </form>
@@ -55,7 +52,7 @@
           <a href="/user/partners">Lonely Partners</a>
         </li>
         <li class="mobile-items">
-          <a href="/user/requests">Lonely Requests</a>
+          <a href="/user/requests">{{#if requestCount}}Lonely Requests(<span class="number"> {{requestCount}} </span>){{else}}Lonely Requests{{/if}}</a>
         </li>
         <li class="mobile-items">
           <a href="/user/suggestions">{{#if suggestionCount}}Suggestions(<span class="number"> {{suggestionCount}} </span>){{else}}Suggestions{{/if}}</a>
@@ -65,9 +62,6 @@
         </li>
         <li class="mobile-items">
           <a href="/message">Message</a>
-        </li>
-        <li class="mobile-items">
-          <a href="/chat">Chat</a>
         </li>
         <li class="mobile-items">
           <a href="/log/out">Log Out</a>

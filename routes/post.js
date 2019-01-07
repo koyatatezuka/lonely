@@ -1,7 +1,11 @@
 const { Router } = require('express');
 
 const { postComment, deleteComment } = require('../controllers/post/comment');
-const { postReply, deleteReply } = require('../controllers/post/reply');
+const { 
+  postReply, 
+  deleteReply, 
+  postPartnerReply, 
+  deletePartnerReply } = require('../controllers/post/reply');
 
 const router = Router();
 
@@ -13,5 +17,9 @@ router.post('/comment/delete', deleteComment);
 router.post('/reply', postReply);
 // handle post request for reply delete
 router.post('/reply/delete', deleteReply);
+// handle post request for reply on partner page
+router.post('/partnerreply', postPartnerReply);
+// handle post request for delete reply on partner page
+router.post('/partnerreply/delete', deletePartnerReply);
 
 module.exports = router;

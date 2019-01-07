@@ -41,11 +41,13 @@ exports.getRequests = async (req, res) => {
 
 	// find all requests
 	const userRequests = await knex('requests')
-		.join('users', { 'users.id': 'partnerId' })
-		.where({ userId: user.id })
-		.whereNot({ userId: user.id });
+		.join('users', { 'users.id': 'userId' })
+		.where({ partnerId: user.id });
 
+	// find all request for partner by id
+	const partnerRequest = await knex('requests').where({ partnerId: user.id });
 
+	console.log(userRequests);
 	res.render('user', {
 		pageTitle: 'Lonely Requests',
 		userCss: true,
@@ -53,7 +55,8 @@ exports.getRequests = async (req, res) => {
 		user,
 		age,
 		userRequests,
-		suggestionCount: suggestion.length
+		suggestionCount: suggestion.length,
+		requestCount: partnerRequest.length
 	});
 };
 
