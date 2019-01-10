@@ -93,6 +93,11 @@ exports.postRequestResponse = async (req, res) => {
 			userId: user.id,
 			partnerId: req.body.partnerId
 		});
+
+		const partnerHandshake = await knex('partners').insert({
+			userId: req.body.partnerId,
+			partnerId: user.id
+		});
 	}
 	// delete request after response
 	const deletedRequest = await knex('requests')

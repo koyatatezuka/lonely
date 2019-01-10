@@ -1,13 +1,12 @@
 const knex = require('../../knex/knex');
-
 const {
 	getAge,
 	getPreferedGender,
 	getPreferedSexualPreference
 } = require('../../util/helper');
 
-// handle get request for partner
-exports.getPartners = async (req, res) => {
+// handle user search get request
+exports.getMessage = async (req, res) => {
 	let preferedGender = ['male', 'female'];
 	let preferedSexualPreference = ['straight', 'gayLesbian', 'biSexual'];
 
@@ -24,6 +23,7 @@ exports.getPartners = async (req, res) => {
 	const requested = await knex('requests')
 		.select('partnerId')
 		.where({ userId: user.id });
+
 	const partner = await knex('partners')
 		.select('partnerId')
 		.where({ userId: user.id });
@@ -39,22 +39,52 @@ exports.getPartners = async (req, res) => {
 		.whereNot({ id: user.id })
 		.limit(10);
 
-	// find all partners
-	const userPartners = await knex('partners')
-		.join('users', { 'users.id': 'partnerId' })
-		.where({ userId: user.id });
-
 	// find all request for partner by id
 	const partnerRequest = await knex('requests').where({ partnerId: user.id });
 
+	// info of partner user is messaging
+	const messagePartner = await knex
+		.select('id', 'firstName')
+		.from('users')
+		.where({ id: req.params.id });
+
+	const messageList = await knex('messages')
+		.join('users', 'users.id', 'messages.user_one')
+		.where({
+			user_one: user.id,
+			user_two: req.params.id
+		})
+		.orWhere({
+			user_one: req.params.id,
+			user_two: user.id
+		})
+    .orderBy('messages.created_at', 'desc')
+    .select(
+      'messages.message',
+      'users.firstName',
+      'users.lastName',
+      'users.image'
+    );
+
 	res.render('user', {
-		pageTitle: 'Lonely Partners',
+		pageTitle: 'Message',
 		userCss: true,
-		partners: true,
+		message: true,
+    messagePartner: messagePartner[0],
+    messageList,
 		user,
 		age,
-		userPartners,
 		suggestionCount: suggestion.length,
 		requestCount: partnerRequest.length
 	});
+};
+
+exports.postMessage = async (req, res) => {
+	const message = await knex('messages').insert({
+		user_one: req.user.id,
+		user_two: req.params.id,
+		message: req.body.message
+	});
+
+	res.redirect(`/user/message/${req.params.id}`);
 };

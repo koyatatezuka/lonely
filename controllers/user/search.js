@@ -49,8 +49,6 @@ exports.postSearch = async (req, res) => {
 		.whereIn('firstName', searchArray)
 		.orWhereIn('lastName', searchArray)
 
-	console.log(searchUsers)
-
 	res.render('user', {
 		pageTitle: 'Search',
 		userCss: true,

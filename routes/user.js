@@ -9,6 +9,7 @@ const {
 } = require('../controllers/user/request');
 const { getPartners } = require('../controllers/user/partner');
 const { getSearch, postSearch } = require('../controllers/user/search');
+const { getMessage, postMessage } = require('../controllers/user/message')
 
 const router = Router();
 
@@ -26,5 +27,9 @@ router.post('/requests/response', postRequestResponse);
 router.get('/partners', getPartners);
 // handle post request user search
 router.post('/search', postSearch);
+// handle get request for message
+router.get('/message/:id', getMessage);
+// handle post request for message
+router.post('/message/:id', postMessage)
 
 module.exports = router;

@@ -29,6 +29,7 @@ exports.getUserProfile = async (req, res) => {
 	let exclude = [...requested, ...partner];
 	exclude = exclude.map(users => users.partnerId);
 
+	console.log(partner)
 	// find all other users within -+5 of user lonely level. Account for gender preference and sexual orientation
 	const suggestion = await knex('users')
 		.whereBetween('lonelyLevel', [user.lonelyLevel - 5, user.lonelyLevel + 5])
@@ -49,10 +50,15 @@ exports.getUserProfile = async (req, res) => {
 	});
 
 	// check if is partner
-	const isPartner = await knex('partners').where({
-		userId: user.id,
-		partnerId: req.params.id
-	});
+	const isPartner = await knex('partners')
+		.where({
+			userId: user.id,
+			partnerId: req.params.id
+		})
+		.orWhere({
+			userId: req.params.id,
+			partnerId: user.id
+		});
 
 	// find all comments
 	const comments = await knex('comments')
@@ -79,8 +85,8 @@ exports.getUserProfile = async (req, res) => {
 	replies.forEach(obj => {
 		obj.created_at = getDate(obj.created_at);
 		obj.lastName = obj.lastName.charAt(0);
-		// checks if reply belongs to the user 
-		obj.isOwnPost = obj.userId === user.id
+		// checks if reply belongs to the user
+		obj.isOwnPost = obj.userId === user.id;
 	});
 	// add array of replies onto comments
 	comments.forEach(com => {
@@ -97,8 +103,7 @@ exports.getUserProfile = async (req, res) => {
 	const partnerRequest = await knex('requests').where({ partnerId: user.id });
 
 	// check if its the owners profile
-	const isUserProfile = user.id == req.params.id
-	
+	const isUserProfile = user.id == req.params.id;
 
 	res.render('user', {
 		pageTitle: 'userName',
