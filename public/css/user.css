@@ -238,20 +238,20 @@
 	}
 
 	.partner-additional_mobile {
-    display: flex;
-    flex-direction: column;
+		display: flex;
+		flex-direction: column;
 		font-weight: 200;
 		line-height: 2rem;
 		margin-left: 1rem;
-    max-width: 15rem;
-    margin-top: .5rem;
-  }
-  
-  .partner-additional_mobile h2{
-    font-weight: 200;
-    letter-spacing: .1rem;
-    color: rgb(170, 170, 170);
-  }
+		max-width: 15rem;
+		margin-top: 0.5rem;
+	}
+
+	.partner-additional_mobile h2 {
+		font-weight: 200;
+		letter-spacing: 0.1rem;
+		color: rgb(170, 170, 170);
+	}
 
 	.unPartner-btn {
 		color: rgb(255, 0, 85);
@@ -266,116 +266,128 @@
 
 /* partner */
 
+.message-link {
+	margin: 1rem 0;
+	font-size: 1.3rem;
+	font-weight: 100;
+	color: rgb(0, 195, 255);
+	text-decoration: none;
+	transition: all 0.3s;
+}
+
+.message-link:hover {
+	letter-spacing: 0.15rem;
+}
+
 .comment-feed {
 	width: 100%;
 }
 
-
 .comment {
-  width: 21rem;
-  background: black;
-  margin: 1rem auto;
-  padding: 1rem;
-  border-radius: .3rem;
-  overflow: auto;
-  max-height: 30rem;
+	width: 21rem;
+	background: black;
+	margin: 1rem auto;
+	padding: 1rem;
+	border-radius: 0.3rem;
+	overflow: auto;
+	max-height: 30rem;
 }
 
 .comment p {
-  color: rgb(170, 170, 170);
-  font-weight: 200;
-  margin-bottom: .5rem;
+	color: rgb(170, 170, 170);
+	font-weight: 200;
+	margin-bottom: 0.5rem;
 }
 
 .created-at {
-  font-size: .9rem;
+	font-size: 0.9rem;
 }
 
 .post-reply {
-  display: flex;
-  flex-direction: column;
-  margin: .5rem 0;
+	display: flex;
+	flex-direction: column;
+	margin: 0.5rem 0;
 }
 
 .post-comment_delete button {
-  background: transparent;
-  border: none;
-  font-size: 1rem;
-  font-weight: 100;
-  color: rgb(255, 59, 59);
-  cursor: pointer;
+	background: transparent;
+	border: none;
+	font-size: 1rem;
+	font-weight: 100;
+	color: rgb(255, 59, 59);
+	cursor: pointer;
 }
 
 .post-reply textarea {
-  resize: none;
-  height: 5rem;
-  padding: .5rem;
-  font-size: 1rem;
-  border-radius: .3rem;
+	resize: none;
+	height: 5rem;
+	padding: 0.5rem;
+	font-size: 1rem;
+	border-radius: 0.3rem;
 }
 
 .post-reply textarea:focus {
-  outline-color: rgb(0, 195, 255);
+	outline-color: rgb(0, 195, 255);
 }
 
 .post-reply button {
-  background: transparent;
-  border: none;
-  font-size: 1rem;
-  font-weight: 100;
-  color: rgb(0, 195, 255);
-  cursor: pointer;
-  margin-top: .5rem;
+	background: transparent;
+	border: none;
+	font-size: 1rem;
+	font-weight: 100;
+	color: rgb(0, 195, 255);
+	cursor: pointer;
+	margin-top: 0.5rem;
 }
 
 .post-reply button:hover,
 .post-comment_delete button:hover {
-  transition: all .3s;
-  letter-spacing: .1rem;
+	transition: all 0.3s;
+	letter-spacing: 0.1rem;
 }
 
 .reply {
-  display: flex;
-  margin: .5rem 0;
+	display: flex;
+	margin: 0.5rem 0;
 }
 
 .user-img_name {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .user-img_name img {
-  width: 7rem;
-  height: 7rem;
-  max-height: 7rem;
-  max-width: 7rem;  
+	width: 7rem;
+	height: 7rem;
+	max-height: 7rem;
+	max-width: 7rem;
 }
 
 .user-img_name p {
-  margin: .3rem 0;
+	margin: 0.3rem 0;
 }
 
 .reply-info {
-  margin-left: 1rem;
+	margin-left: 1rem;
 }
 
 .user-reply {
-  max-height: 6rem;
-  overflow: auto;
+	max-height: 6rem;
+	overflow: auto;
 }
 
 .post-reply_delete button {
-  font-weight: 100;
-  background-color: transparent;
-  border: none;
-  font-size: .9rem;
-  color: rgb(255, 59, 59);
-  cursor: pointer;
+	font-weight: 100;
+	background-color: transparent;
+	border: none;
+	font-size: 0.9rem;
+	color: rgb(255, 59, 59);
+	cursor: pointer;
 }
 
 .post-reply_delete button:hover {
-  letter-spacing: .1rem;
-  transition: all .3s;
+	letter-spacing: 0.1rem;
+	transition: all 0.3s;
 }
 
 /* end of partner */
@@ -433,15 +445,15 @@
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
-	transition: all .3s;
+	transition: all 0.3s;
 }
 
 .accept-btn {
-	color: rgb(0, 195, 255)
+	color: rgb(0, 195, 255);
 }
 
 .decline-btn {
-	color: rgb(255, 97, 97)
+	color: rgb(255, 97, 97);
 }
 
 .accept-btn:hover {
@@ -488,13 +500,13 @@
 	width: 8rem;
 	max-width: 8rem;
 	max-height: 8rem;
-	border-radius: .3rem;
+	border-radius: 0.3rem;
 }
 
 .partners-user {
 	font-weight: 200;
 	text-align: center;
-	margin-top: .5rem;
+	margin-top: 0.5rem;
 }
 
 .partners-card a {
@@ -507,7 +519,7 @@
 }
 
 .partners-card:hover {
-	transition: all .3s;
+	transition: all 0.3s;
 	color: rgb(170, 170, 170);
 }
 
@@ -517,8 +529,82 @@
 	}
 }
 
-
 /* end of lonely partners */
+
+/* message */
+
+.message-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.message-form textarea {
+	resize: none;
+	border-radius: 0.3rem;
+	padding: 0.5rem;
+	font-size: 1rem;
+	font-weight: 100;
+	width: 20rem;
+}
+
+.message-form textarea:focus {
+	outline-color: rgb(0, 195, 255);
+}
+
+.message-btn {
+	color: rgb(0, 195, 255);
+	font-size: 1.2rem;
+	font-weight: 100;
+	border: none;
+	background-color: transparent;
+	margin: 0.5rem auto 0 auto;
+	transition: all 0.3s;
+	cursor: pointer;
+	width: 8rem;
+}
+
+.message-btn:hover {
+	letter-spacing: 0.2rem;
+}
+
+.message-feed {
+	margin-top: .5rem;
+	overflow: auto;
+	max-height: 20rem;
+	padding: .1rem .3rem;
+}
+
+.message {
+	display: flex;
+	margin: .6rem 0;
+}
+
+.user-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: .7rem;
+	font-weight: 100;
+}
+
+.user-info img {
+	width: 4rem;
+	height: 4rem;
+	max-width: 4rem;
+	max-height: 4rem;
+	border-radius: 50%;
+}
+
+.message-info {
+	margin-left: .5rem;
+	max-width: 15rem;
+	max-height: 5rem;
+	overflow: auto;
+	font-size: .9rem;
+	font-weight: 100;
+}
+
+/* end of message */
 
 @media (max-width: 940px) {
 	.users-container {
