@@ -12,6 +12,9 @@
         <label for="firstName">First Name</label>
         <input type="text" name="firstName" placeholder="John" required>
         <label for="lastName">Last Name</label>
+        {{#if emailExist}}
+        <p class="exist">Email Already Exist</p>
+        {{/if}}
         <input type="text" name="lastName" placeholder="Wick" required>
         <label for="email">E-mail</label>
         <input type="email" name="email" placeholder="lonely@aol.com" required>

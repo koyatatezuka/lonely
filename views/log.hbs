@@ -3,6 +3,9 @@
     <span class="lonely">lonely</span> partner</h1>
   <div class="log-card">
     <form class="form" action="/log" method="POST">
+      {{#if failedAttempt}}
+      <p>Invalid Email/Password</p>
+      {{/if}}
       <label for="email">E-mail</label>
       <input type="email" name="email" required>
       <label for="password">Password</label>

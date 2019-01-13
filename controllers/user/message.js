@@ -10,6 +10,8 @@ exports.getMessage = async (req, res) => {
 	let preferedGender = ['male', 'female'];
 	let preferedSexualPreference = ['straight', 'gayLesbian', 'biSexual'];
 
+	if (!req.user) return res.redirect('/log');
+
 	const user = req.user;
 
 	// find user age with helper function

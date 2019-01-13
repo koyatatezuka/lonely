@@ -114,6 +114,10 @@
   background-color: rgb(0, 92, 121)
 }
 
+.exist {
+  color: rgb(255, 58, 58);
+}
+
 @media (max-width: 750px) {
   .user {
     width: 20rem;
