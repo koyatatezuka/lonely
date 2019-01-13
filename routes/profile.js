@@ -9,18 +9,18 @@ const {
   postImage 
 } = require('../controllers/profile');
 // only for development
-const { 
-  secretAccessKey,
-  accessKeyId,
-  region
-} = require('../config/aws_configuration')
+// const { 
+//   secretAccessKey,
+//   accessKeyId,
+//   region
+// } = require('../config/aws_configuration')
 
 const router = Router();
 
 aws.config.update({
-  secretAccessKey: process.env.SECRET_KEY || secretAccessKey,
-  accessKeyId: process.env.KEY_ID || accessKeyId,
-  region: process.env.REGION || region
+  secretAccessKey: process.env.SECRET_KEY /* || secretAccessKey */,
+  accessKeyId: process.env.KEY_ID /* || accessKeyId */,
+  region: process.env.REGION /* || region */
 });
 
 const s3 = new aws.S3();

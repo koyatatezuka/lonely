@@ -1,22 +1,22 @@
 //const { host, user, password, database } = require('./config/db_configuration');
 
 module.exports = {
-	development: {
-		client: 'pg',
-		connection: {
-			host,
-			user,
-			password,
-			charset: 'utf8',
-			database
-		},
-		migrations: {
-			directory: __dirname + '/knex/migrations'
-		},
-		seeds: {
-			directory: __dirname + '/knex/seeds'
-		}
-	},
+	// development: {
+	// 	client: 'pg',
+	// 	connection: {
+	// 		host,
+	// 		user,
+	// 		password,
+	// 		charset: 'utf8',
+	// 		database
+	// 	},
+	// 	migrations: {
+	// 		directory: __dirname + '/knex/migrations'
+	// 	},
+	// 	seeds: {
+	// 		directory: __dirname + '/knex/seeds'
+	// 	}
+	// },
 
 	staging: {
 		client: 'postgresql',
