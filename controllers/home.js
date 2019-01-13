@@ -10,9 +10,8 @@ const {
 exports.getHome = async (req, res) => {
 	let preferedGender = ['male', 'female'];
 	let preferedSexualPreference = ['straight', 'gayLesbian', 'biSexual'];
-	const isSignIn = true;
 
-	if (!isSignIn) return res.redirect('/log');
+	if (!req.user) return res.redirect('/log');
 
 	const user = req.user;
 

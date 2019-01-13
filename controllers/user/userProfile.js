@@ -11,6 +11,8 @@ exports.getUserProfile = async (req, res) => {
 	let preferedGender = ['male', 'female'];
 	let preferedSexualPreference = ['straight', 'gayLesbian', 'biSexual'];
 
+	if (!req.user) return res.redirect('/log');
+
 	const user = req.user;
 
 	// find user age with helper function
@@ -29,7 +31,6 @@ exports.getUserProfile = async (req, res) => {
 	let exclude = [...requested, ...partner];
 	exclude = exclude.map(users => users.partnerId);
 
-	console.log(partner)
 	// find all other users within -+5 of user lonely level. Account for gender preference and sexual orientation
 	const suggestion = await knex('users')
 		.whereBetween('lonelyLevel', [user.lonelyLevel - 5, user.lonelyLevel + 5])
