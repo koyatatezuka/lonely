@@ -42,6 +42,8 @@ module.exports = {
 		},
 		seeds: {
 			directory: __dirname + '/knex/seeds'
-		}
+    },
+    ssl: true,
+    debug: true
 	}
 };
